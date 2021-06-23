@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Exercicios
 {
     public class Exercicio26
     {
-        public Exercicio26(decimal km, decimal litros)
+        public Exercicio26()
         {
-            KmRodados = km;
-            LitrosCombustivel = litros;
+
         }
         private decimal KmRodados;
         private decimal LitrosCombustivel;
@@ -27,7 +27,22 @@ namespace Exercicios
                 }
                 else
                 {
-                    throw new ExercicioException(1, "Erro ");
+                    throw new ExercicioException(1, $"Erro de valores. {decimal.MinValue} é o mínimo. {decimal.MaxValue} é o máximo");
+                }
+            }
+        }
+        public decimal _litrosCombustivel
+        {
+            get { return LitrosCombustivel; }
+            set
+            {
+                if(value >= decimal.MinValue && value <= decimal.MaxValue)
+                {
+                    LitrosCombustivel = value;
+                }
+                else
+                {
+                    throw new ExercicioException(1, $"Erro de valores. {decimal.MinValue} é o mínimo. {decimal.MaxValue} é o máximo");
                 }
             }
         }
@@ -36,10 +51,12 @@ namespace Exercicios
             if(KmRodados / LitrosCombustivel < 8)
             {
                 return "Venda o carro!";
-            }else if(KmRodados / LitrosCombustivel >= 8 && KmRodados / LitrosCombustivel < 14)
+            }
+            else if(KmRodados / LitrosCombustivel >= 8 && KmRodados / LitrosCombustivel < 14)
             {
                 return "Econômico!";
-            }else
+            }
+            else
             {
                 return "Super econômico!";
             }
