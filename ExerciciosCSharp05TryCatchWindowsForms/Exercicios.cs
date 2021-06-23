@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Exercicios;
 using ExerciciosException;
@@ -56,6 +49,28 @@ namespace ExerciciosCSharp05TryCatchWindowsForms
             catch (ExercicioException er)
             {
                 MessageBox.Show($"Um erro aconteceu: {er.Message}\n\n\n {er.StackTrace}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Exercicio27_Click(object sender, EventArgs e)
+        {
+            var exercicio27 = new Exercicio27();
+
+            try
+            {
+                if(int.TryParse(textBox4.Text, out int result))
+                {
+                    exercicio27._idade = result;
+                    MessageBox.Show($"Categoria: {exercicio27.CalcularIdade()}", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    throw new ExercicioException(5, $"O campo requer um valor inteiro. \"{textBox4.Text}\" não é inteiro");
+                }
+            }
+            catch(ExercicioException erro)
+            {
+                MessageBox.Show($"Um erro aconteceu: {erro.Message} \n\n\n{erro.StackTrace}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
             }
         }
     }
