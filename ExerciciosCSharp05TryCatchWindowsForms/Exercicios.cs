@@ -7,9 +7,14 @@ namespace ExerciciosCSharp05TryCatchWindowsForms
 {
     public partial class Exercicios : Form
     {
+        int interacao = 0;
         public Exercicios()
         {
             InitializeComponent();
+
+            var exercicio29 = new Exercicio29();
+            textBox8.Text = exercicio29._numero1.ToString();
+            textBox9.Text = exercicio29._numero2.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -71,6 +76,105 @@ namespace ExerciciosCSharp05TryCatchWindowsForms
             catch(ExercicioException erro)
             {
                 MessageBox.Show($"Um erro aconteceu: {erro.Message} \n\n\n{erro.StackTrace}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error); ;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var exercicio28 = new Exercicio28();
+            try
+            {
+                if(double.TryParse(textBox5.Text, out double result1))
+                {
+                    exercicio28._valorX = result1;
+                }
+                else
+                {
+                    throw new ExercicioException(8, $"Valor \"{textBox5.Text}\" no formato incorreto. São aceitos somente números");
+                }
+                if (double.TryParse(textBox6.Text, out double result2))
+                {
+                    exercicio28._valorY = result2;
+                }
+                else
+                {
+                    throw new ExercicioException(8, $"Valor \"{textBox6.Text}\" no formato incorreto. São aceitos somente números");
+                }
+                if (double.TryParse(textBox7.Text, out double result3))
+                {
+                    exercicio28._valorZ = result3;
+                }
+                else
+                {
+                    throw new ExercicioException(8, $"Valor \"{textBox7.Text}\" no formato incorreto. São aceitos somente números");
+                }
+
+                if (radioButton1.Checked)
+                {
+                    MessageBox.Show($"Resultado: {exercicio28.MediaGeometrica().ToString()}", "Média geométrica", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (radioButton2.Checked)
+                {
+                    MessageBox.Show($"Resultado: {exercicio28.MediaPonderada().ToString()}", "Média ponderada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (radioButton3.Checked)
+                {
+                    MessageBox.Show($"Resultado: {exercicio28.MediaHarmonica().ToString()}", "Média harmonica", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else if (radioButton4.Checked)
+                {
+                    MessageBox.Show($"Resultado: {exercicio28.MediaAritmetica().ToString()}", "Média aritmética", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Escolha uma média para o cálculo", "Faltou", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
+            catch (ExercicioException erro)
+            {
+                MessageBox.Show($"Um erro aconteceu {erro.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var acertos = 0;
+            try
+            {
+                if (int.TryParse(textBox10.Text, out int result))
+                {
+                    var exercicio29 = new Exercicio29();
+                    textBox8.Text = exercicio29._numero1.ToString();
+                    textBox9.Text = exercicio29._numero2.ToString();
+                    interacao++;
+                    textBox10.Text = "";
+
+                    if (interacao <= 6)
+                    {
+                        textBox8.Text = exercicio29._numero1.ToString();
+                        textBox9.Text = exercicio29._numero2.ToString();
+                        interacao++;
+
+                        if(int.Parse(textBox8.Text) + int.Parse(textBox9.Text) == result)
+                        {
+                            acertos += 1;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Voce já respondeu 5 questões. Acertou {acertos}", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        interacao = 0;
+                        acertos = 0;
+                    }
+                }
+                else
+                {
+                    throw new ExercicioException(10, $"O campo de respostas só aceita valores numericos e não pode estar vazio. \"{textBox10.Text}\" não é válido");
+                }
+            }
+            catch(ExercicioException erro)
+            {
+                MessageBox.Show($"Um erro aconteceu {erro.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
