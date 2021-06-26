@@ -7,12 +7,15 @@ namespace ExerciciosCSharp05TryCatchWindowsForms
 {
     public partial class Exercicios : Form
     {
-        int interacao = 0;
+        int interacao = 1;
+        int acertos = 0;
+        Exercicio29 exercicio29 = new Exercicio29();
         public Exercicios()
         {
             InitializeComponent();
 
-            var exercicio29 = new Exercicio29();
+            exercicio29.gerarNumeros();
+            label9.Text = $"Questão {interacao}";
             textBox8.Text = exercicio29._numero1.ToString();
             textBox9.Text = exercicio29._numero2.ToString();
         }
@@ -138,33 +141,47 @@ namespace ExerciciosCSharp05TryCatchWindowsForms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var acertos = 0;
             try
             {
                 if (int.TryParse(textBox10.Text, out int result))
                 {
-                    var exercicio29 = new Exercicio29();
-                    textBox8.Text = exercicio29._numero1.ToString();
-                    textBox9.Text = exercicio29._numero2.ToString();
-                    interacao++;
+                    //var exercicio29 = new Exercicio29();
+                    
                     textBox10.Text = "";
+                    interacao++;
 
-                    if (interacao <= 6)
+                    if (interacao <= 5)
                     {
-                        textBox8.Text = exercicio29._numero1.ToString();
-                        textBox9.Text = exercicio29._numero2.ToString();
-                        interacao++;
+                        //textBox8.Text = exercicio29._numero1.ToString();
+                        //textBox9.Text = exercicio29._numero2.ToString();                        
 
-                        if(int.Parse(textBox8.Text) + int.Parse(textBox9.Text) == result)
+                        if (int.Parse(textBox8.Text) + int.Parse(textBox9.Text) == result)
+                        //if(exercicio29._numero1 + exercicio29._numero2 == result)
                         {
                             acertos += 1;
                         }
+                        exercicio29.gerarNumeros();
+                        textBox8.Text = exercicio29._numero1.ToString();
+                        textBox9.Text = exercicio29._numero2.ToString();
+                        
+                        label10.Text = $"Acertos {acertos}";
+                        label9.Text = $"Questão {interacao}";
                     }
                     else
                     {
+                        if (int.Parse(textBox8.Text) + int.Parse(textBox9.Text) == result)
+                        {
+                            acertos += 1;
+                        }
+                        label10.Text = $"Acertos {acertos}";
                         MessageBox.Show($"Voce já respondeu 5 questões. Acertou {acertos}", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        interacao = 0;
+                        interacao = 1;
+                        label9.Text = $"Questão {interacao}";
                         acertos = 0;
+                        label10.Text = $"Acertos {acertos}";
+                        exercicio29.gerarNumeros();
+                        textBox8.Text = exercicio29._numero1.ToString();
+                        textBox9.Text = exercicio29._numero2.ToString();
                     }
                 }
                 else
