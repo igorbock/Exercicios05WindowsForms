@@ -62,15 +62,21 @@ namespace ExerciciosCSharp05TryCatchWindowsForms
             this.label4 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.Exercicio30 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.groupBox5);
             this.panel1.Controls.Add(this.groupBox4);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.groupBox2);
@@ -391,6 +397,44 @@ namespace ExerciciosCSharp05TryCatchWindowsForms
             this.label10.TabIndex = 7;
             this.label10.Text = "Acertos 0";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.Exercicio30);
+            this.groupBox5.Controls.Add(this.textBox11);
+            this.groupBox5.Controls.Add(this.label11);
+            this.groupBox5.Location = new System.Drawing.Point(246, 110);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(238, 76);
+            this.groupBox5.TabIndex = 12;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Exercício 30";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(5, 20);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(34, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Valor ";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(60, 17);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(100, 20);
+            this.textBox11.TabIndex = 13;
+            // 
+            // Exercicio30
+            // 
+            this.Exercicio30.Location = new System.Drawing.Point(157, 47);
+            this.Exercicio30.Name = "Exercicio30";
+            this.Exercicio30.Size = new System.Drawing.Size(75, 23);
+            this.Exercicio30.TabIndex = 14;
+            this.Exercicio30.Text = "Proxímo";
+            this.Exercicio30.UseVisualStyleBackColor = true;
+            this.Exercicio30.Click += new System.EventHandler(this.Exercicio30_Click);
+            // 
             // Exercicios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -408,6 +452,8 @@ namespace ExerciciosCSharp05TryCatchWindowsForms
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -446,6 +492,10 @@ namespace ExerciciosCSharp05TryCatchWindowsForms
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Button Exercicio30;
     }
 }
 

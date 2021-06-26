@@ -9,7 +9,9 @@ namespace ExerciciosCSharp05TryCatchWindowsForms
     {
         int interacao = 1;
         int acertos = 0;
+        int valor = 1;
         Exercicio29 exercicio29 = new Exercicio29();
+        Exercicio30 exercicio30 = new Exercicio30();
         public Exercicios()
         {
             InitializeComponent();
@@ -18,6 +20,7 @@ namespace ExerciciosCSharp05TryCatchWindowsForms
             label9.Text = $"Questão {interacao}";
             textBox8.Text = exercicio29._numero1.ToString();
             textBox9.Text = exercicio29._numero2.ToString();
+            label11.Text = $"Valor {valor}";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -192,6 +195,58 @@ namespace ExerciciosCSharp05TryCatchWindowsForms
             catch(ExercicioException erro)
             {
                 MessageBox.Show($"Um erro aconteceu {erro.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Exercicio30_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (valor)
+                {
+                    case 1:
+                        if (double.TryParse(textBox11.Text, out double result1))
+                        {
+                            exercicio30._numero1 = result1;
+                            valor++;
+                            label11.Text = $"Valor {valor}";
+                        }
+                        else
+                        {
+                            throw new ExercicioException(12, $"O valor deve ser numerico e não pode estar vazio. \"{textBox11.Text}\" não é válido");
+                        }
+                        break;
+                    case 2:
+                        if (double.TryParse(textBox11.Text, out double result2) && valor.Equals(2))
+                        {
+                            exercicio30._numero2 = result2;
+                            valor++;
+                            label11.Text = $"Valor {valor}";
+                        }
+                        else
+                        {
+                            throw new ExercicioException(12, $"O valor deve ser numerico e não pode estar vazio. \"{textBox11.Text}\" não é válido");
+                        }
+                        break;
+                    case 3:
+                        if (double.TryParse(textBox11.Text, out double result) && valor.Equals(3))
+                        {
+                            exercicio30._numero3 = result;
+                            label11.Text = $"Valor {valor}";
+                            valor = 1;
+                            double[] resultado = exercicio30.ordemCrescente();
+                            MessageBox.Show($"A ordem crescente dos valores é: \n\n{resultado[0]}\n{resultado[1]}\n{resultado[2]}", "Resultado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            throw new ExercicioException(12, $"O valor deve ser numerico e não pode estar vazio. \"{textBox11.Text}\" não é válido");
+                        }
+                        break;
+                }
+            }
+            catch(ExercicioException erro)
+            {
+                MessageBox.Show($"Um erro aconteceu --> {erro.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
